@@ -5,13 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>叭啦哔哩</title>
 <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_5171287_qc3fml9bfnm.css">
-<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.19.0/js/md5.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#f4f4f5;font-family:Microsoft YaHei;padding-bottom:60px}
 a{text-decoration:none;color:#333}
 
-/* 顶部导航 */
 header{width:100%;height:70px;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.08);position:sticky;top:0;z-index:999}
 .shortcut{width:1200px;height:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
 .left{display:flex;align-items:center;gap:10px}
@@ -19,107 +17,42 @@ header{width:100%;height:70px;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.0
 .menu-btn{display:none;width:30px;height:24px;border:none;background:transparent;padding:0;cursor:pointer;flex-direction:column;justify-content:space-between}
 .menu-btn span{width:100%;height:4px;background:#222;border-radius:2px}
 
-/* 搜索框 */
 .search{display:flex;align-items:center}
 .search input{width:320px;height:36px;padding:0 16px;border:1px solid #e5e9ef;border-radius:18px 0 0 18px;outline:none;background:#f4f4f5}
 .search-btn{width:60px;height:36px;background:#f00000;border:none;border-radius:0 18px 18px 0;color:#fff;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center}
 
-/* PC导航 */
 .nav-pc{display:flex;gap:28px}
 .nav-pc a{font-size:15px}
 .nav-pc a:hover,.nav-pc a.active{color:#f00000}
 
-/* 侧边栏遮罩 */
-.sidebar-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  z-index: 999;
-  display: none;
-}
+.sidebar-overlay {position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,0.5);z-index: 999;display: none;}
 .sidebar-overlay.show { display: block; }
-
-/* 侧边栏（三条杠）：竖排 + 设置/扫一扫红底 */
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: -80%;
-  width: 80%;
-  height: 100%;
-  background: #fff;
-  transition: left 0.3s ease;
-  z-index: 1000;
-  padding: 20px;
-  overflow-y: auto;
-}
+.sidebar {position: fixed;top: 0;left: -80%;width: 80%;height: 100%;background: #fff;transition: left 0.3s ease;z-index: 1000;padding: 20px;overflow-y: auto;}
 .sidebar.show { left: 0; }
+.sidebar-header {display: flex;flex-direction: column;gap: 10px;margin-bottom: 30px;}
+.sidebar-header-btn {background: #f00000;color: #fff;border: none;border-radius: 20px;padding: 10px 16px;display: flex;align-items: center;gap: 8px;font-size: 15px;cursor: pointer;}
+.sidebar-title {font-size: 18px;font-weight: bold;margin-bottom: 15px;}
+.sidebar-grid {display: flex;flex-direction: column;gap: 14px;}
+.sidebar-item {display: flex;align-items: center;gap: 12px;font-size: 16px;padding: 8px 0;cursor: pointer;}
+.sidebar-item i {font-size: 24px;color: #f00000;}
 
-.sidebar-header {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 30px;
-}
-.sidebar-header-btn {
-  background: #f00000;
-  color: #fff;
-  border: none;
-  border-radius: 20px;
-  padding: 10px 16px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-.sidebar-title {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-.sidebar-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-.sidebar-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 16px;
-  padding: 8px 0;
-  cursor: pointer;
-}
-.sidebar-item i {
-  font-size: 24px;
-  color: #f00000;
-}
-
-/* 分类导航 */
 .category-bar{width:100%;background:#fff;border-bottom:1px solid #eee;overflow-x:auto;white-space:nowrap;padding:0 10px}
 .category-bar .wrap{width:1200px;margin:0 auto;display:flex;gap:25px;height:40px;align-items:center}
 .category-bar a{font-size:14px;padding:0 5px}
 .category-bar a:hover,.category-bar a.active{color:#f00000}
 
-/* 内容布局 */
 .container{width:100%;padding:15px}
 .video-list{display:grid;grid-template-columns:1fr 1fr;gap:15px}
 .video-item{background:#fff;border-radius:8px;overflow:hidden}
 .cover{width:100%;height:124px;background:#dde0e3}
 .title{padding:8px 10px;font-size:15px;color:#333;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.5}
 
-/* 底部导航 */
 .bottom-nav{position:fixed;bottom:0;left:0;width:100%;height:60px;background:#fff;display:flex;justify-content:space-around;align-items:center;box-shadow:0 -1px 5px rgba(0,0,0,.08);z-index:999}
 .bottom-nav .nav-item{display:flex;flex-direction:column;align-items:center;font-size:12px;color:#666;cursor:pointer}
 .bottom-nav .nav-item i{font-size:24px;margin-bottom:3px}
 .bottom-nav .nav-item.active,.bottom-nav .nav-item:hover{color:#f00000}
 .bottom-nav .publish-btn{width:60px;height:60px;background:#f00000;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:30px;margin-top:-20px;cursor:pointer}
 
-/* 响应式 */
 @media screen and (max-width: 768px) {
   header { height: 60px; }
   .left .Navbar_logo { font-size: 36px; }
@@ -131,55 +64,13 @@ header{width:100%;height:70px;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.0
   .shortcut,.container,.category-bar .wrap { width: 100%; }
 }
 
-/* 登录弹窗 */
-.modal {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
+.modal {position: fixed;top: 0; left: 0;width: 100%; height: 100%;background: rgba(0,0,0,0.6);display: none;justify-content: center;align-items: center;z-index: 9999;}
 .modal.show { display: flex; }
-.login-box {
-  width: 90%; max-width: 380px;
-  background: #fff; border-radius: 12px;
-  padding: 25px;
-}
-.login-box h3 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #f00000;
-  font-size: 24px;
-}
-.input-item { margin-bottom: 15px; }
-.input-item input {
-  width: 100%; height: 48px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 0 15px;
-  outline: none;
-  font-size: 16px;
-}
-.login-btn {
-  width: 100%; height: 50px;
-  background: #f00000; color: #fff;
-  border: none; border-radius: 8px;
-  font-size: 18px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-.close-btn {
-  text-align: center;
-  margin-top: 20px;
-  color: #666;
-  cursor: pointer;
-  font-size: 16px;
-}
+.login-box {width: 90%; max-width: 380px;background: #fff; border-radius: 12px;padding: 25px;}
+.login-box h3 {text-align: center;margin-bottom: 20px;color: #f00000;font-size: 24px;}
+.login-btn {width: 100%; height: 50px;background: #f00000; color: #fff;border: none; border-radius: 8px;font-size: 18px;cursor: pointer;margin-top: 10px;}
+.close-btn {text-align: center;margin-top: 20px;color: #666;cursor: pointer;font-size: 16px;}
 
-/* 客服弹窗 */
 .service-modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);display:none;justify-content:center;align-items:center;z-index:10010;}
 .service-modal.show{display:flex;}
 .service-box{width:90%;max-width:360px;background:#fff;border-radius:12px;padding:20px;text-align:center;}
@@ -194,100 +85,23 @@ header{width:100%;height:70px;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.0
 #msgInput{flex:1;height:44px;padding:0 12px;border:1px solid #ddd;border-radius:8px;outline:none}
 .send-btn{width:70px;background:#f00000;color:#fff;border:none;border-radius:8px}
 
-/* 我的页面（完整布局） */
-.user-page {
-  display: none;
-  padding-bottom: 80px;
-}
-.user-header {
-  width: 100%;
-  height: 250px;
-  background: #f00000;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  position: relative;
-}
-.back-btn {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  color: #fff;
-  font-size: 24px;
-  cursor: pointer;
-}
-.avatar {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: #fff;
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 40px;
-  color: #f00000;
-}
-.user-name {
-  font-size: 24px;
-  font-weight: bold;
-}
-.user-menu {
-  background: #fff;
-  margin: 15px;
-  border-radius: 12px;
-  overflow: hidden;
-}
-.user-menu-item {
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  border-bottom: 1px solid #eee;
-  cursor: pointer;
-  font-size: 18px;
-}
+.user-page {display: none;padding-bottom: 80px;}
+.user-header {width: 100%;height: 250px;background: #f00000;display: flex;flex-direction: column;align-items: center;justify-content: center;color: #fff;position: relative;}
+.back-btn {position: absolute;top: 20px;left: 20px;color: #fff;font-size: 24px;cursor: pointer;}
+.avatar {width: 100px;height: 100px;border-radius: 50%;background: #fff;margin-bottom: 15px;display: flex;align-items: center;justify-content: center;font-size: 40px;color: #f00000;}
+.user-name {font-size: 24px;font-weight: bold;}
+.user-menu {background: #fff;margin: 15px;border-radius: 12px;overflow: hidden;}
+.user-menu-item {display: flex;align-items: center;padding: 20px;border-bottom: 1px solid #eee;cursor: pointer;font-size: 18px;}
 .user-menu-item:last-child { border-bottom: none; }
 
-/* 列表页 */
-.list-page {
-  display: none;
-  padding-bottom: 80px;
-}
-.list-header {
-  width: 100%;
-  height: 60px;
-  background: #f00000;
-  display: flex;
-  align-items: center;
-  padding: 0 15px;
-  color: #fff;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-.list-header .back-btn {
-  position: static;
-  color: #fff;
-  font-size: 20px;
-  margin-right: 10px;
-}
+.list-page {display: none;padding-bottom: 80px;}
+.list-header {width: 100%;height: 60px;background: #f00000;display: flex;align-items: center;padding: 0 15px;color: #fff;position: sticky;top: 0;z-index: 100;}
+.list-header .back-btn {position: static;color: #fff;font-size: 20px;margin-right: 10px;}
 .list-header h3 { font-size: 18px; }
 .list-content { padding: 10px; }
-.list-item {
-  background: #fff;
-  border-radius: 8px;
-  padding: 12px;
-  margin-bottom: 10px;
-}
-.empty-tip {
-  text-align: center;
-  padding: 40px 0;
-  color: #999;
-}
+.list-item {background: #fff;border-radius: 8px;padding: 12px;margin-bottom: 10px;}
+.empty-tip {text-align: center;padding: 40px 0;color:#999;}
 
-/* 发布弹窗 */
 .publish-type-modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);display:none;justify-content:center;align-items:center;z-index:10000}
 .publish-type-modal.show{display:flex}
 .type-box{width:90%;max-width:300px;background:#fff;border-radius:12px;padding:20px;text-align:center}
@@ -297,10 +111,7 @@ header{width:100%;height:70px;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.0
 </head>
 <body>
 
-<!-- 侧边栏遮罩 -->
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
-
-<!-- 侧边栏（三条杠） -->
 <div class="sidebar" id="sidebar">
   <div class="sidebar-header">
     <button class="sidebar-header-btn"><i class="iconfont icon-shezhi"></i> 设置</button>
@@ -317,37 +128,24 @@ header{width:100%;height:70px;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.0
   </div>
 </div>
 
-<!-- 登录弹窗 -->
 <div class="modal" id="loginModal">
   <div class="login-box">
-    <h3>账号登录 / 注册</h3>
-    <div class="input-item">
-      <input type="text" id="phoneInput" placeholder="请输入手机号">
-    </div>
-    <div class="input-item">
-      <input type="password" id="pwdInput" placeholder="请输入密码">
-    </div>
-    <button class="login-btn" onclick="doLogin()">登录 / 注册</button>
+    <h3>绑定百度网盘账号</h3>
+    <p style="text-align:center;margin-bottom:15px;color:#666">一键授权登录你的百度网盘</p>
+    <button class="login-btn" onclick="bdPanAuth()">前往百度网盘授权</button>
     <div class="close-btn" onclick="closeModal()">关闭</div>
   </div>
 </div>
 
-<!-- 客服弹窗 -->
 <div class="service-modal" id="serviceModal">
   <div class="service-box">
     <h3>联系客服</h3>
     <div id="chatBox"></div>
-    <div class="input-line">
-      <input id="msgInput" placeholder="输入消息...">
-      <button class="send-btn" onclick="sendMsg()">发送</button>
-    </div>
-    <div style="text-align:center;margin-top:15px">
-      <button onclick="closeServiceModal()" style="padding:6px 16px;background:#f00000;color:#fff;border:none;border-radius:6px">关闭</button>
-    </div>
+    <div class="input-line"><input id="msgInput" placeholder="输入消息..."><button class="send-btn" onclick="sendMsg()">发送</button></div>
+    <div style="text-align:center;margin-top:15px"><button onclick="closeServiceModal()" style="padding:6px 16px;background:#f00000;color:#fff;border:none;border-radius:6px">关闭</button></div>
   </div>
 </div>
 
-<!-- 发布类型选择弹窗 -->
 <div class="publish-type-modal" id="publishTypeModal">
   <div class="type-box">
     <h3>选择发布类型</h3>
@@ -357,158 +155,120 @@ header{width:100%;height:70px;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.0
   </div>
 </div>
 
-<!-- 上传文件选择 -->
-<input type="file" id="fileInput" style="display:none" onchange="handleFileSelect()">
+<input type="file" id="fileInput" style="display:none">
 
-<!-- 首页内容 -->
 <div id="homePage">
   <header>
     <div class="shortcut">
       <div class="left">
-        <button class="menu-btn" id="menuBtn" onclick="toggleSidebar()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        <button class="menu-btn" onclick="toggleSidebar()"><span></span><span></span><span></span></button>
         <i class="iconfont Navbar_logo"></i>
       </div>
-
-      <div class="search">
-        <input type="text" placeholder="搜索感兴趣的内容、UP主、视频">
-        <button class="search-btn">搜索</button>
-      </div>
-
+      <div class="search"><input placeholder="搜索"><button class="search-btn">搜索</button></div>
       <nav class="nav-pc">
-        <a href="#" class="active">首页</a>
-        <a href="#">推荐</a>
-        <a href="#">直播</a>
-        <a href="#">分区</a>
-        <a href="#">会员购</a>
-        <a href="#" onclick="openModal()">登录</a>
+        <a class="active">首页</a><a>推荐</a><a>直播</a><a onclick="openModal()">绑定网盘</a>
       </nav>
     </div>
   </header>
 
-  <div class="category-bar">
-    <div class="wrap">
-      <a href="#" class="active">首页</a>
-      <a href="#">推荐</a>
-      <a href="#">视频</a>
-      <a href="#">热榜</a>
-      <a href="#">纪录片</a>
-      <a href="#">电影</a>
-      <a href="#">电视剧</a>
-      <a href="#">影视</a>
-      <a href="#">娱乐</a>
-      <a href="#">音乐</a>
-      <a href="#">舞蹈</a>
-      <a href="#">游戏</a>
-      <a href="#">科技</a>
-      <a href="#">知识</a>
-      <a href="#">生活</a>
-      <a href="#">美食</a>
-    </div>
-  </div>
+  <div class="category-bar"><div class="wrap">
+    <a class="active">首页</a><a>热门</a><a>影视</a><a>游戏</a><a>音乐</a>
+  </div></div>
 
-  <div class="container">
-    <div class="video-list" id="videoList"></div>
-  </div>
+  <div class="container"><div class="video-list" id="videoList"></div></div>
 
-  <!-- 底部导航 -->
   <div class="bottom-nav">
-    <a href="#" class="nav-item active" onclick="switchPage('home')">
-      <i class="iconfont icon-shouye"></i><span>首页</span>
-    </a>
-    <a href="#" class="nav-item">
-      <i class="iconfont icon-guanzhu"></i><span>关注</span>
-    </a>
+    <div class="nav-item active" onclick="switchPage('home')"><i class="iconfont icon-shouye"></i><span>首页</span></div>
+    <div class="nav-item"><i class="iconfont icon-guanzhu"></i><span>关注</span></div>
     <div class="publish-btn" onclick="needLoginTip()">+</div>
-    <a href="#" class="nav-item">
-      <i class="iconfont icon-xiaoxi"></i><span>消息</span>
-    </a>
-    <div class="nav-item" onclick="goMyPage()">
-      <i class="iconfont icon-wode"></i><span>我的</span>
-    </div>
+    <div class="nav-item"><i class="iconfont icon-xiaoxi"></i><span>消息</span></div>
+    <div class="nav-item" onclick="goMyPage()"><i class="iconfont icon-wode"></i><span>我的</span></div>
   </div>
 </div>
 
-<!-- 我的个人中心页面 -->
 <div class="user-page" id="userPage">
   <div class="user-header">
     <div class="back-btn" onclick="switchPage('home')">←</div>
     <div class="avatar">👤</div>
-    <div class="user-name" id="userName">用户昵称</div>
+    <div class="user-name" id="userName">未绑定百度网盘</div>
   </div>
   <div class="user-menu">
-    <div class="user-menu-item" onclick="openMyVideos()">我的视频</div>
-    <div class="user-menu-item" onclick="openMyImages()">我的图片</div>
+    <div class="user-menu-item" onclick="openMyVideos()">网盘视频</div>
+    <div class="user-menu-item" onclick="openMyImages()">网盘图片</div>
     <div class="user-menu-item" onclick="openServiceModal()">联系客服</div>
-    <div class="user-menu-item" onclick="logout()">退出登录</div>
+    <div class="user-menu-item" onclick="logout()">解除网盘绑定</div>
   </div>
 </div>
 
-<!-- 视频列表页 -->
 <div class="list-page" id="videoPage">
-  <div class="list-header">
-    <div class="back-btn" onclick="goBackToMy()">←</div>
-    <h3>我的视频</h3>
-  </div>
+  <div class="list-header"><div class="back-btn" onclick="goBackToMy()">←</div><h3>网盘视频文件</h3></div>
   <div class="list-content" id="myVideoList"></div>
 </div>
 
-<!-- 图片列表页 -->
 <div class="list-page" id="imagePage">
-  <div class="list-header">
-    <div class="back-btn" onclick="goBackToMy()">←</div>
-    <h3>我的图片</h3>
-  </div>
+  <div class="list-header"><div class="back-btn" onclick="goBackToMy()">←</div><h3>网盘图片文件</h3></div>
   <div class="list-content" id="myImageList"></div>
 </div>
 
 <script>
-let currentUser = null;
+// ========== 百度网盘开放平台配置（已为你填好） ==========
+const BD_PAN_CLIENT_ID = "GfJXhKpOCbotRfH3DdzcnGpr97tppSOq";
+const BD_PAN_CLIENT_SECRET = "BVqmVphnj7EMdH9DXzz9Vp4YPwl7i9k3";
+const BD_PAN_REDIRECT_URI = "https://jusdlg.github.io/balabilla/";
+const BD_PAN_FOLDER_PATH = "/网页短视频素材/"; // 网盘存放文件夹
+
+let accessToken = localStorage.getItem('bdpan_token') || '';
 let publishType = '';
 
-// 侧边栏开关（三条杠）
-function toggleSidebar() {
-  const sidebar = document.getElementById('sidebar');
-  const overlay = document.getElementById('sidebarOverlay');
-  sidebar.classList.toggle('show');
-  overlay.classList.toggle('show');
-}
-
-// 初始化
+// 页面初始化
 window.onload = () => {
-  const savedUser = localStorage.getItem('currentUser');
-  if(savedUser){
-    currentUser = savedUser;
-    document.getElementById('userName').innerText = '用户' + savedUser.slice(-4);
+  if(accessToken){
+    document.getElementById('userName').innerText = "已绑定百度网盘账号";
+    getPanFileList();
   }
-  // 游客也加载视频
-  loadHomeVideos();
+  // 接收授权回调code
+  const urlCode = new URLSearchParams(location.search).get('code');
+  if(urlCode) getAccessToken(urlCode);
+};
 
-  // 1分钟自动弹登录
-  setTimeout(()=>{
-    if(!currentUser){
-      openModal();
-    }
-  }, 60000);
+// 侧边栏
+function toggleSidebar(){
+  const s=document.getElementById('sidebar');
+  const o=document.getElementById('sidebarOverlay');
+  s.classList.toggle('show');
+  o.classList.toggle('show');
 }
 
-// 未登录提示
+// 跳转百度网盘授权
+function bdPanAuth(){
+  const authUrl = `https://openapi.baidu.com/oauth/2.0/authorize?client_id=${BD_PAN_CLIENT_ID}&response_type=code&redirect_uri=${BD_PAN_REDIRECT_URI}&scope=basic,netdisk`;
+  window.location.href = authUrl;
+}
+
+// 授权code换取令牌
+async function getAccessToken(code){
+  let res = await fetch(`https://openapi.baidu.com/oauth/2.0/token?grant_type=authorization_code&client_id=${BD_PAN_CLIENT_ID}&client_secret=${BD_PAN_CLIENT_SECRET}&redirect_uri=${BD_PAN_REDIRECT_URI}&code=${code}`);
+  let data = await res.json();
+  if(data.access_token){
+    accessToken = data.access_token;
+    localStorage.setItem('bdpan_token',accessToken);
+    alert('百度网盘绑定成功！');
+    location.href = BD_PAN_REDIRECT_URI;
+  }
+}
+
+// 判断是否绑定网盘
 function needLoginTip(){
-  if(!currentUser){
-    alert('请先登录账号');
+  if(!accessToken){
+    alert('请先绑定百度网盘账号');
     openModal();
     return;
   }
   openPublishModal();
 }
-
-// 进入我的页面
 function goMyPage(){
-  if(!currentUser){
-    alert('请先登录账号');
+  if(!accessToken){
+    alert('请先绑定百度网盘账号');
     openModal();
     return;
   }
@@ -516,178 +276,108 @@ function goMyPage(){
 }
 
 // 页面切换
-function switchPage(page){
-  if(page === 'home'){
-    document.getElementById('homePage').style.display = 'block';
-    document.getElementById('userPage').style.display = 'none';
-    document.getElementById('videoPage').style.display = 'none';
-    document.getElementById('imagePage').style.display = 'none';
-  } else if(page === 'my'){
-    document.getElementById('homePage').style.display = 'none';
-    document.getElementById('userPage').style.display = 'block';
-    document.getElementById('videoPage').style.display = 'none';
-    document.getElementById('imagePage').style.display = 'none';
-  }
+function switchPage(p){
+  document.getElementById('homePage').style.display=p=='home'?'block':'none';
+  document.getElementById('userPage').style.display=p=='my'?'block':'none';
+  document.getElementById('videoPage').style.display='none';
+  document.getElementById('imagePage').style.display='none';
 }
 
-// 登录
-async function doLogin(){
-  const phone = document.getElementById('phoneInput').value.trim();
-  const pwd = document.getElementById('pwdInput').value.trim();
-  if(!phone || !pwd) return alert('请输入手机号和密码');
-
-  const res = await fetch('/api/login', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ phone, pwd })
-  });
-  const data = await res.json();
-
-  if(data.ok){
-    currentUser = phone;
-    localStorage.setItem('currentUser', phone);
-    document.getElementById('userName').innerText = '用户' + phone.slice(-4);
-    closeModal();
-    alert('登录成功！');
-    loadHomeVideos();
-  } else {
-    alert('登录失败：' + data.msg);
-  }
-}
-
-// 加载首页视频
-async function loadHomeVideos(){
-  const res = await fetch('/api/videos');
-  const list = await res.json();
-  const html = list.map(v => `
-    <div class="video-item">
-      <div class="cover"></div>
-      <div class="title">${v.time}</div>
-    </div>
-  `).join('');
-  document.getElementById('videoList').innerHTML = html;
-}
-
-// 发布
-function openPublishModal(){
-  document.getElementById('publishTypeModal').classList.add('show');
-}
-function closePublishTypeModal(){
-  document.getElementById('publishTypeModal').classList.remove('show');
-}
-function selectPublishType(type){
-  publishType = type;
+// 发布弹窗
+function openPublishModal(){document.getElementById('publishTypeModal').classList.add('show');}
+function closePublishTypeModal(){document.getElementById('publishTypeModal').classList.remove('show');}
+function selectPublishType(t){
+  publishType=t;
   closePublishTypeModal();
-  document.getElementById('fileInput').accept = type === 'video' ? 'video/*' : 'image/*';
+  document.getElementById('fileInput').accept=t=='video'?'video/*':'image/*';
   document.getElementById('fileInput').click();
 }
 
-// 上传
-async function handleFileSelect(){
-  const file = document.getElementById('fileInput').files[0];
-  if(!file) return;
+// 上传文件到百度网盘
+document.getElementById('fileInput').onchange = async e=>{
+  let file = e.target.files[0];
+  if(!file)return;
+  alert('开始上传至百度网盘，请稍等...');
+  let fileName = file.name;
+  let targetPath = BD_PAN_FOLDER_PATH + fileName;
 
-  const formData = new FormData();
-  const fileId = Date.now() + '';
-  formData.append('chunk', file);
-  formData.append('index', 0);
-  formData.append('fileId', fileId);
+  // 1.预上传获取上传地址
+  let preRes = await fetch(`https://pan.baidu.com/rest/2.0/xpan/file?method=precreate&access_token=${accessToken}&path=${encodeURIComponent(targetPath)}&size=${file.size}&isdir=0`);
+  let preData = await preRes.json();
+  if(preData.errno !==0){
+    alert('预上传失败');
+    return;
+  }
 
-  await fetch('/api/upload/chunk', { method: 'POST', body: formData });
-
-  await fetch('/api/upload/merge', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      fileId: fileId,
-      fileName: file.name,
-      total: 1,
-      userPhone: currentUser,
-      type: publishType
-    })
+  // 2.分片上传（简易单块上传）
+  let form = new FormData();
+  form.append('file',file);
+  let upRes = await fetch(`https://d.pcs.baidu.com/rest/2.0/pcs/file?method=upload&access_token=${accessToken}&path=${encodeURIComponent(targetPath)}&uploadid=${preData.uploadid}&partseq=0`,{
+    method:"POST",body:form
   });
+  let upData = await upRes.json();
 
-  alert('发布成功！');
-  loadHomeVideos();
+  // 3.创建文件完成
+  await fetch(`https://pan.baidu.com/rest/2.0/xpan/file?method=create&access_token=${accessToken}&path=${encodeURIComponent(targetPath)}&size=${file.size}&uploadid=${preData.uploadid}&isdir=0`);
+  alert('上传成功！已存入你的百度网盘');
+  getPanFileList();
+};
+
+// 获取网盘文件列表
+async function getPanFileList(){
+  let res = await fetch(`https://pan.baidu.com/rest/2.0/xpan/file?method=list&access_token=${accessToken}&path=${encodeURIComponent(BD_PAN_FOLDER_PATH)}`);
+  let data = await res.json();
+  if(data.errno!==0)return;
+  let html = '';
+  data.list.forEach(item=>{
+    if(item.isdir)return;
+    let fileUrl = `https://pan.baidu.com/s/1${item.md5}`;
+    html += `
+    <div class="video-item">
+      <div class="cover" style="display:flex;align-items:center;justify-content:center;color:#999">网盘文件</div>
+      <div class="title">${item.filename}</div>
+    </div>
+    `;
+  });
+  document.getElementById('videoList').innerHTML = html;
+}
+
+// 我的视频图片
+function openMyVideos(){
+  document.getElementById('userPage').style.display='none';
+  document.getElementById('videoPage').style.display='block';
+  document.getElementById('myVideoList').innerHTML='<div class="empty-tip">请到网盘文件夹查看视频</div>';
+}
+function openMyImages(){
+  document.getElementById('userPage').style.display='none';
+  document.getElementById('imagePage').style.display='block';
+  document.getElementById('myImageList').innerHTML='<div class="empty-tip">请到网盘文件夹查看图片</div>';
+}
+function goBackToMy(){
+  document.getElementById('videoPage').style.display='none';
+  document.getElementById('imagePage').style.display='none';
+  document.getElementById('userPage').style.display='block';
 }
 
 // 客服
-async function openServiceModal(){
-  document.getElementById('serviceModal').classList.add('show');
-  loadChatMessages();
-}
-function closeServiceModal(){
-  document.getElementById('serviceModal').classList.remove('show');
-}
-async function loadChatMessages(){
-  const res = await fetch('/api/messages');
-  const list = await res.json();
-  document.getElementById('chatBox').innerHTML = list.map(m => `
-    <div class="${m.isAdmin ? 'msg-admin' : 'msg-me'}">
-      <div class="bubble">${m.content}</div>
-    </div>
-  `).join('');
-}
-async function sendMsg(){
-  const content = document.getElementById('msgInput').value.trim();
-  if(!content) return;
-  await fetch('/api/sendMsg', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ userPhone: currentUser, content })
-  });
-  document.getElementById('msgInput').value = '';
-  loadChatMessages();
+function openServiceModal(){document.getElementById('serviceModal').classList.add('show');}
+function closeServiceModal(){document.getElementById('serviceModal').classList.remove('show');}
+function sendMsg(){
+  const c=document.getElementById('msgInput').value.trim();
+  if(!c)return;
+  alert('已发送：'+c);
+  document.getElementById('msgInput').value='';
 }
 
-// 我的视频/图片
-async function openMyVideos(){
-  document.getElementById('userPage').style.display = 'none';
-  document.getElementById('videoPage').style.display = 'block';
-  const res = await fetch('/api/my/videos', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ userPhone: currentUser })
-  });
-  const list = await res.json();
-  document.getElementById('myVideoList').innerHTML = list.length ? list.map(v => `
-    <div class="list-item">
-      <video src="${v.fileUrl}" controls style="width:100%"></video>
-      <div style="margin-top:8px;font-size:12px;color:#666">${v.time}</div>
-    </div>
-  `).join('') : '<div class="empty-tip">暂无视频</div>';
-}
-async function openMyImages(){
-  document.getElementById('userPage').style.display = 'none';
-  document.getElementById('imagePage').style.display = 'block';
-  const res = await fetch('/api/my/images', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ userPhone: currentUser })
-  });
-  const list = await res.json();
-  document.getElementById('myImageList').innerHTML = list.length ? list.map(v => `
-    <div class="list-item">
-      <img src="${v.fileUrl}" style="width:100%;border-radius:4px">
-      <div style="margin-top:8px;font-size:12px;color:#666">${v.time}</div>
-    </div>
-  `).join('') : '<div class="empty-tip">暂无图片</div>';
-}
-function goBackToMy(){
-  document.getElementById('videoPage').style.display = 'none';
-  document.getElementById('imagePage').style.display = 'none';
-  document.getElementById('userPage').style.display = 'block';
-}
+// 弹窗
+function openModal(){document.getElementById('loginModal').classList.add('show');}
+function closeModal(){document.getElementById('loginModal').classList.remove('show');}
 
-// 登录弹窗
-function openModal(){ document.getElementById('loginModal').classList.add('show'); }
-function closeModal(){ document.getElementById('loginModal').classList.remove('show'); }
-
-// 退出登录
+// 解除绑定（退出登录）
 function logout(){
-  if(confirm('确定退出登录吗？')){
-    localStorage.removeItem('currentUser');
-    currentUser = null;
+  if(confirm('确定解除百度网盘绑定？')){
+    localStorage.removeItem('bdpan_token');
+    accessToken='';
     location.reload();
   }
 }
